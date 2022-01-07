@@ -1,0 +1,21 @@
+INSERT INTO "riskmanagement_Mitigations" (
+    createdAt,
+    createdBy,
+    descr,
+    ID,
+    modifiedAt,
+    modifiedBy,
+    owner,
+    timeline
+  )
+VALUES
+  (
+    'createdAt:TIMESTAMP_TEXT',
+    'createdBy:NVARCHAR(255)',
+    'descr:NVARCHAR(5000)',
+    'ID:NVARCHAR(36)',
+    'modifiedAt:TIMESTAMP_TEXT',
+    'modifiedBy:NVARCHAR(255)',
+    'owner:NVARCHAR(5000)',
+    'timeline:NVARCHAR(5000)'
+  );

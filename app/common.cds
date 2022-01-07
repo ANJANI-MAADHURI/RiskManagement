@@ -8,6 +8,7 @@ owner  @title : 'Owner';
 prio   @title : 'Priority';
 descr  @title : 'Description';
 miti   @title : 'Mitigation';
+bp     @title : 'Business Partner';
 impact @title : 'Impact';
 }
 
@@ -19,6 +20,16 @@ ID     @(
 );
 owner  @title : 'Owner';
 descr  @title : 'Description';
+}
+
+// annotate Business Partner Elements
+annotate rm.BusinessPartners with {
+    BusinessPartner @(
+        UI.Hidden,
+        Common : {Text : LastName}
+    );
+    LastName        @title : 'Last Name';
+    FirstName       @title : 'First Name';
 }
 
 annotate rm.Risks with {
@@ -42,6 +53,31 @@ miti @(Common : {
     ]
     }
 });
+// annotate rm.Risks with {
+bp   @(Common : {
+        Text            : bp.LastName,
+        TextArrangement : #TextOnly,
+        ValueList       : {
+            Label          : 'Business Partners',
+            CollectionPath : 'BusinessPartners',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : bp_BusinessPartner,
+                    ValueListProperty : 'BusinessPartner'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'LastName'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'FirstName'
+                }
+            ]
+        }
+    })
+    // });
 }
 
 using from './risks/annotations';
